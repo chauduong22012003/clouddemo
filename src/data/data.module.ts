@@ -1,13 +1,15 @@
 import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
+
 import { User, UserSchema } from "./user.schema";
-import { userService } from "./data.seervices";
+import { BillService, BodyParserInterceptor, userService } from "./data.seervices";
 import { MongooseModule } from "@nestjs/mongoose";
-import { UserController } from "./data.controllers";
+import { BillController, UserController } from "./data.controllers";
+import { Bill, BillSchema } from "./bill.schema";
+import { APP_INTERCEPTOR } from "@nestjs/core";
 
 @Module({
-    imports:[MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),],
-    controllers: [UserController],
-    providers:[userService],
+    imports:[MongooseModule.forFeature([{ name: User.name, schema: UserSchema },{ name: Bill.name, schema: BillSchema }]),],
+    controllers: [UserController,BillController],
+    providers:[userService,BillService],
 })
 export class DataModule {}
