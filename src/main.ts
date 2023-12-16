@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.use(cors({
-    origin: 'http://localhost:3006', // Set the origin of your frontend application
+    origin: 'https://phattien.uc.r.appspot.com/', // Set the origin of your frontend application
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 200,
